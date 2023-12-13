@@ -2,17 +2,11 @@ import { useRef } from "react";
 import Input from "./Input";
 import Modal from "./Modal";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd, onCancel }) {
   const title = useRef();
   const description = useRef();
   const date = useRef();
   const modal = useRef();
-
-  const handleCancel = () => {
-    title.current.value = "";
-    description.current.value = "";
-    date.current.value = "";
-  };
 
   const handleSave = () => {
     const enteredTitle = title.current.value;
@@ -42,7 +36,7 @@ export default function NewProject({ onAdd }) {
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
             <button
-              onClick={handleCancel}
+              onClick={onCancel}
               className="text-stone-800 hover:text-stone-950 "
             >
               Cancel

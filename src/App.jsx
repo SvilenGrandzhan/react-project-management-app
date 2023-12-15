@@ -10,7 +10,20 @@ function App() {
     projects: [],
   });
 
-  const handleAddTask = () => {};
+  const handleAddTask = (text) => {
+    setProjectsState((previousState) => {
+      const taskId = Math.random();
+      const newTask = {
+        text: text,
+        projectId: previousState.selectedProjectId,
+        id: taskId,
+      };
+      return {
+        ...previousState,
+        tasks: [newTask, ...previousState.tasks],
+      };
+    });
+  };
 
   const handleDeleteTask = () => {};
 
@@ -47,7 +60,6 @@ function App() {
       };
       return {
         ...previousState,
-        // later will projectId to selectedProjectId
         selectedProjectId: undefined,
         projects: [...previousState.projects, newProject],
       };
@@ -62,6 +74,7 @@ function App() {
       onAddTask={handleAddTask}
       onDeleteTask={handleDeleteTask}
       onDelete={handleDeleteProject}
+      tasks={projectsState.tasks}
     />
   );
 
@@ -76,6 +89,7 @@ function App() {
     content = <NoProjectSelected onAddProject={handleAddProjectId} />;
   }
 
+  console.log(projectsState.tasks);
   return (
     <main className="h-screen my-8 flex gap-8">
       <ProjectsSidebar

@@ -1,3 +1,5 @@
+import Tasks from "./Tasks";
+
 export default function SelectedProject({ project }) {
   const formattedDate = new Date(project.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -14,7 +16,7 @@ export default function SelectedProject({ project }) {
         <p className="mb-4 text-stone-400">{project.date}</p>
         <p className="text-stone-600 whitespace-pre-wrap">{project.description}</p>
       </header>
-      tasks
+      <Tasks />
     </div>
   );
 }

@@ -8,6 +8,7 @@ function App() {
   const [projectsState, setProjectsState] = useState({
     selectedProjectId: undefined,
     projects: [],
+    tasks: [],
   });
 
   const handleAddTask = (text) => {
@@ -72,8 +73,8 @@ function App() {
     <SelectedProject
       project={selectedProject}
       onAddTask={handleAddTask}
-      onDeleteTask={handleDeleteTask}
       onDelete={handleDeleteProject}
+      onDeleteTask={handleDeleteTask}
       tasks={projectsState.tasks}
     />
   );
@@ -89,7 +90,6 @@ function App() {
     content = <NoProjectSelected onAddProject={handleAddProjectId} />;
   }
 
-  console.log(projectsState.tasks);
   return (
     <main className="h-screen my-8 flex gap-8">
       <ProjectsSidebar
